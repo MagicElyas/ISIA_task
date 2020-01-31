@@ -62,6 +62,23 @@ public class Matriz {
         return ret;
     }
 
+    public static Matriz multiplicarDosMatrices(Matriz a, Matriz b) throws DimensionesIncompatibles{
+        if(  a.getDimension().width != b.getDimension().height ){
+            throw new DimensionesIncompatibles("La multiplicacion de 2 matrices tiene que hacerse con la anchura de la primera igual a la altura de la segunda");
+        }
+        int[][] product = new int[a.getDimension().height][b.getDimension().width];
+        for(int i = 0; i < a.getDimension().height; i++) {
+            for (int j = 0; j < b.getDimension().width; j++) {
+                for (int k = 0; k < a.getDimension().height ; k++) {
+                    product[i][j] += a.datos[i][k] * b.datos[k][j];
+                }
+            }
+        }
+        Matriz res = new Matriz(product);
+        return res;
+    }
+    
+    
     @Override
     public String toString(){
         String ret = "";

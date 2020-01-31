@@ -13,6 +13,13 @@ public class Matrices {
         Matriz m2 = new Matriz(3, 4, true);
         //System.out.println(m2);
         System.out.println(Matriz.invertirMatriz(m1));
+        System.out.println(m1.getDimension());
+        System.out.println(m2.getDimension().height);
+        try {
+            System.out.println(Matriz.multiplicarDosMatrices(m1, m2));
+        } catch (DimensionesIncompatibles ex) {
+            ex.printStackTrace();
+        }
     }
     
 }
