@@ -29,7 +29,10 @@ public class Matriz {
     public Matriz(Dimension d, boolean inicializarAleatorio){
         this(d.height, d.width, inicializarAleatorio);
     }
-    
+       
+    public Matriz(int[][] datos){
+        this.datos = datos;
+    }
     public Dimension getDimension(){
         return new Dimension(datos.length, datos[0].length);
     }
@@ -47,6 +50,17 @@ public class Matriz {
         } 
         return matrizResultante; 
     } 
+    
+    public static Matriz invertirMatriz(Matriz a){
+        int[][] res = new int[a.getDimension().height][a.getDimension().width];
+        for (int i=0;i< a.getDimension().width;i++) {
+            for (int j=0;j<a.getDimension().height;j++) {
+                res[j][i] = a.datos[i][j];
+            }
+        }
+        Matriz ret = new Matriz(res);
+        return ret;
+    }
 
     @Override
     public String toString(){
